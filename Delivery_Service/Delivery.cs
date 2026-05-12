@@ -1,7 +1,19 @@
 ﻿namespace Delivery_Service
 {
-    public interface Delivery
+    public abstract class Delivery : IDelivery
     {
-        //void time
+        public double Distance { get; set; }
+
+        public Delivery(double distance)
+        {
+            if (distance <= 0)
+            {
+                throw new Exception("Invalid distance.");
+            }
+
+            Distance = distance;
+        }
+
+        public abstract double CalculateTime();
     }
 }
